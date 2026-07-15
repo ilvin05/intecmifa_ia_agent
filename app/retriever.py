@@ -7,10 +7,13 @@ def get_retriever():
     vectorstore = Chroma(persist_directory="db", embedding_function=OpenAIEmbeddings
     (model="text-embedding-3-small", api_key=OPENAI_API_KEY))
     retriever = vectorstore.as_retriever()
+
+    print(vectorstore._collection.count())  # Imprime el número de documentos en la base vectorial
     return retriever
     
 if __name__ == "__main__":
     # Crear un retriever a partir de la base vectorial
     retriever = get_retriever()
     print("Se ha creado el retriever a partir de la base vectorial")
+    
    

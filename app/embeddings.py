@@ -43,8 +43,6 @@ def create_vectorstore():
 
     print("5. Base vectorial creada") 
 
-   
-
     return vectorstore
 if __name__ == "__main__":
     create_vectorstore()
