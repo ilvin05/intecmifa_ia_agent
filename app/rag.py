@@ -31,18 +31,21 @@ def create_rag():
     prompt = ChatPromptTemplate.from_messages([
         (
             "system",
-            """Eres el asistente virtual de INTECMIFA.
+      """ Eres el asistente virtual de INTECMIFA.
 
-Responde únicamente utilizando la información recuperada de la base de conocimientos.
+Tu objetivo es ayudar a los usuarios de manera amable y profesional.
 
-Si la información no está disponible en el contexto proporcionado, responde exactamente:
+Si el usuario realiza un saludo como "hola", "buenos días", "buenas tardes", "gracias", "adiós" o cualquier conversación casual, responde naturalmente como un asistente virtual.
+
+Si la pregunta está relacionada con INTECMIFA, responde utilizando únicamente la información del contexto proporcionado.
+
+Si el contexto no contiene la respuesta, responde:
 
 "No encontré esa información en la base de conocimientos de INTECMIFA."
 
 No inventes información ni hagas suposiciones.
 
-Responde siempre en español, de forma clara, profesional y breve.
-
+Responde siempre en español.
 Contexto:
 {context}"""
         ), # <-- Coma de control para evitar el SyntaxWarning
@@ -50,8 +53,7 @@ Contexto:
             "human", 
             "{input}"
         )
-    ])
-
+ ])
     # 4. Construir las cadenas jerárquicas del RAG
     documents_chain = create_stuff_documents_chain(llm, prompt)
     rag_chain = create_retrieval_chain(retriever, documents_chain)
@@ -60,34 +62,34 @@ Contexto:
 
 
 # --- Bloque de prueba de ejecución ---
-if __name__ == "__main__":
-    print("Iniciando el sistema RAG de INTECMIFA...")
+#if __name__ == "__main__":
+    #print("Iniciando el sistema RAG de INTECMIFA...")
 
     # Construimos la cadena
-    mi_agente_rag = create_rag()
-while True:
-    preguntas = input("Ingrese su pregunta para INTECMIFA_Agent_IA: ")
-    if preguntas.lower() in ["salir", "exit", "quit"]:
-        print("Saliendo del sistema RAG de INTECMIFA...")
-        break
+   # mi_agente_rag = create_rag()
+#while True:
+   # preguntas = input("Ingrese su pregunta para INTECMIFA_Agent_IA: ")
+   # if preguntas.lower() in ["salir", "exit", "quit"]:
+    #    print("Saliendo del sistema RAG de INTECMIFA...")
+    #   break
     # Obtener el retriever para probarlo
-    respuesta = mi_agente_rag.invoke( preguntas)
+    #respuesta = mi_agente_rag.invoke( preguntas)
     #retriever = get_retriever()
 
-    docs = retriever.invoke(preguntas)
+    #docs = retriever.invoke(preguntas)
 
 
     # Ahora ejecutamos el RAG
-    respuesta = mi_agente_rag.invoke({"input": preguntas})
+   # respuesta = mi_agente_rag.invoke({"input": preguntas})
 
     # Obtener el retriever para probarlo
-    retriever = get_retriever()
+   #retriever = get_retriever()
 
-    docs = retriever.invoke(preguntas)
+    #docs = retriever.invoke(preguntas)
 
     # Ahora ejecutamos el RAG
-    respuesta = mi_agente_rag.invoke({"input": preguntas})
+   # respuesta = mi_agente_rag.invoke({"input": preguntas})
 
-    print("\n=== RESPUESTA RECIBIDA ===")
-    print(preguntas)
-    print(respuesta["answer"])
+    #print("\n=== RESPUESTA RECIBIDA ===")
+  #  print(preguntas)
+   # print(respuesta["answer"])
