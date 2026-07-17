@@ -23,8 +23,10 @@ Este proyecto forma parte de mi proceso de aprendizaje sobre Agentes de IA, Lang
 - Python
 - Git
 - GitHub
+- Langchain
+- Chroma
 
-*(Más adelante agregaremos LangChain, LangGraph, Streamlit, FAISS, etc.)*
+
 
 ---
 
@@ -35,12 +37,22 @@ intemcifa_ia_agent/
 
 app/
     __init__.py
+    config.py
     main.py
-    test.py
+    enbeddings.py
+    loarder.py
+    rag.py
+    retriever.py
+    spliter.py
+    assets/
+    css/
 
 data/
 
 docs/
+frontend/
+__init__.py
+frontend.py
 
 README.md
 requirements.txt
@@ -51,4 +63,4 @@ requirements.txt
 
 ## Estado del proyecto
 
-🚧 En desarrollo.
+🚧 Enproceso de mejora.
